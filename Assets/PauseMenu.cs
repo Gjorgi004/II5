@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu; =
+    [SerializeField] GameObject pauseMenu;
 
     void Awake()
     {
         
         if (pauseMenu == null)
         {
-            pauseMenu  GameObject.Find("PauseMenu"); 
+      //      pauseMenu  GameObject.Find("PauseMenu"); 
         }
 
         if (pauseMenu == null)
