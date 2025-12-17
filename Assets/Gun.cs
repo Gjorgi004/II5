@@ -32,6 +32,9 @@ public class Gun : MonoBehaviour
             {
                 target.TakeDamage(damage);
             }
+
+          //  Instantiate();
+
         }
     }
 
