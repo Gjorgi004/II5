@@ -5,7 +5,7 @@ public class Gun : MonoBehaviour
 
     public float damage = 10f;
     public float range = 100f;
-    public float firerate = 50f;
+    public float firerate = 15f;
 
 
     public Camera fpsCam;
