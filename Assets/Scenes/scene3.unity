@@ -3602,7 +3602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5269945355364510514, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
       propertyPath: speed
-      value: 8
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269945355364510514, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
+      propertyPath: canRun
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5269945355364510514, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
       propertyPath: runSpeed
@@ -3795,7 +3799,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5241267463746980526, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
   m_PrefabInstance: {fileID: 1461342764}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1542031534
+--- !u!114 &1542031539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3807,6 +3811,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec2ef995753e854a9dad2295d135fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1377708085}
+  dashforce: 45
+  dashCooldown: 1
+  isDashing: 0
 --- !u!1001 &1543441509
 PrefabInstance:
   m_ObjectHideFlags: 0
