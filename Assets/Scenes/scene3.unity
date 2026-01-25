@@ -3807,6 +3807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec2ef995753e854a9dad2295d135fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  dashforce: 45
+  dashCooldown: 1
+  isDashing: 0
 --- !u!1001 &1543441509
 PrefabInstance:
   m_ObjectHideFlags: 0
