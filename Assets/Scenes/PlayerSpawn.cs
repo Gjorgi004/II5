@@ -1,18 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerSpawn : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    void Start()
-    {
-        if (!string.IsNullOrEmpty(SceneLoader.spawnPointName))
-        {
-            GameObject spawn =
-                GameObject.Find(SceneLoader.spawnPointName);
+    public static Vector3 spawnPosition;
 
-            if (spawn != null)
-            {
-                transform.position = spawn.transform.position;
-            }
-        }
+    public void LoadLab()
+    {
+        spawnPosition = Vector3.zero; 
+        SceneManager.LoadScene("scene3");
     }
 }
