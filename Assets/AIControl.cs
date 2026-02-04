@@ -56,6 +56,16 @@ public class AiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EnviromentView();
+
+        if (!m_IsPatrol)
+        {
+            Chasing();
+        }
+        else
+        {
+            Patroling();
+        }
 
     }
 
@@ -82,7 +92,11 @@ public class AiScript : MonoBehaviour
             }
             else
             {
-             //   if (Vector3.Distance(transform.position,))
+                if (Vector3.Distance(transform.position,GameObject.FindGameObjectWithTag("Player").transform.position)>= 2.5f)
+                {
+                    Stop();
+                    m_WaitTime -= Time.deltaTime;
+                }
             }
         }
     }
@@ -197,10 +211,10 @@ public class AiScript : MonoBehaviour
             }
 
         }
-        if (m_PlayerInRange)
-        {
-            m_PlayerPosition = player.transform.position;
-        }    
+      //  if (m_PlayerInRange)
+      //  {
+      //      m_PlayerPosition = player.transform.position;
+      //  }    
 
     }
    
