@@ -16,4 +16,9 @@ public class SceneLoader : MonoBehaviour
         spawnPointName = "LabSpawnPoint";
         SceneManager.LoadScene("scene3");
     }
+    public void RuinsRuins()
+    {
+        spawnPointName = "RuinsSpawnPoint";
+        SceneManager.LoadScene("scene3");
+    }
 }
