@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; 
-
+using TMPro;
+public TextMeshProUGUI HealthText;
 public class HealthUI : MonoBehaviour
 {
     public Image healthBarFill;
@@ -15,8 +16,11 @@ public class HealthUI : MonoBehaviour
     public void UpdateHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        
-        
-        healthBarFill.fillAmount = currentHealth / maxHealth;
+    
+    
+    healthBarFill.fillAmount = currentHealth / maxHealth;
+
+    
+    HealthText.text = Mathf.RoundToInt(currentHealth).ToString() + "%";
     }
 }
