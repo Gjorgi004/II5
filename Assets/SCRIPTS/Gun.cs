@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
 
         RaycastHit hit;
         Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range);
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range));
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
             Target target = hit.transform.GetComponent<Target>();
@@ -37,7 +37,6 @@ public class Gun : MonoBehaviour
             {
                 target.TakeDamage(damage);
             }
-
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO, 2f);
 
