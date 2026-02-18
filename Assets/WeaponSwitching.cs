@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WeaponSwitching : MonoBehaviour
+public class WeaponSwitchings : MonoBehaviour
 {
 
     public int selectedWeapon = 0;
