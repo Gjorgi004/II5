@@ -2088,9 +2088,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1423596453, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
     - target: {fileID: 1444463664, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
       propertyPath: dashforce
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5365560630905667539, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
       propertyPath: m_RootOrder
