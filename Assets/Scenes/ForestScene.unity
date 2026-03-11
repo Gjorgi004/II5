@@ -1947,6 +1947,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e46fe87ee32f9504489ad220a4aeb26a, type: 3}
+--- !u!1 &2051732931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 781057204, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
+  m_PrefabInstance: {fileID: 198804420653820665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051732934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051732931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1facc290e649d344c965bd3bf38b83b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayAmount: 0.02
+  maxSwayAmount: 0.06
+  smoothAmount: 6
+  hipPosition: {x: 0, y: 0, z: 0}
+  aimPosition: {x: 0, y: 0, z: 0}
+  adsSpeed: 10
+  bobSpeed: 10
+  bobAmount: 0.05
 --- !u!1 &2053194218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,6 +2114,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1423596453, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423596453, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
       propertyPath: impactEffect
       value: 
       objectReference: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
@@ -2096,6 +2125,10 @@ PrefabInstance:
       propertyPath: dashforce
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1997668231, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 100002, guid: 56bfc2f4b4a0c534c8ef3d0fd1124c44, type: 3}
     - target: {fileID: 5365560630905667539, guid: 685db58be5d4d8f4cb7bc7d217acb8e3, type: 3}
       propertyPath: m_RootOrder
       value: 12
