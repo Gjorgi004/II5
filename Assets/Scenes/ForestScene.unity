@@ -2101,7 +2101,9 @@ MonoBehaviour:
   walkSpeed: 7
   sprintSpeed: 10
   groundDrag: 5
+  maxYspeed: 0
   dashSpeed: 20
+  dashSpeedChangeFactor: 50
   jumpForce: 12
   jumpCooldown: 0.25
   airMultiplier: 0.4
@@ -2153,6 +2155,11 @@ MonoBehaviour:
   dashForce: 20
   dashUpwardForce: 0
   dashDuration: 0.25
+  maxDashYSpeed: 15
+  useCameraForward: 1
+  allowAllDirections: 1
+  disableGravity: 1
+  resetVel: 1
   dashCd: 1.5
   dashCdTimer: 0
   dashKey: 304

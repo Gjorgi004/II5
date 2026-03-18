@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,7 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDrag;
 
+    public float maxYspeed;
+
     public float dashSpeed;
+    public float dashSpeedChangeFactor;
 
     public float jumpForce;
     public float jumpCooldown;
@@ -118,8 +123,33 @@ private void Start()
 
     }
 
-    private void desiredMoveSpeed;
+    private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
+
+    private float speedChangeFactor;
+
+    private IEnumerator SmoothlyLerpMoveSpeed()
+    {
+        float time = 0;
+        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        float boostFactor = speedChangeFactor;
+
+        while (time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+
+            time += Time.deltaTime * boostFactor;
+
+            yield return null;
+        }
+
+        moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
+    }
+
     private MovementState lastState;
     private bool keepMomentum;
 
@@ -129,28 +159,55 @@ private void Start()
         if (dashing)
         {
             state = MovementState.dashing;
-            moveSpeed = dashSpeed;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
         }
 
         //Mode - Sprinting
         else if (grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed;
         }
 
         //Mode - Walking
         else if (grounded)
         {
             state = MovementState.walking;
-            moveSpeed = walkSpeed;
+            desiredMoveSpeed = walkSpeed;
         }
 
         //Mode - Air
         else
         {
             state = MovementState.air;
+
+            if (desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+                desiredMoveSpeed = sprintSpeed;
         }
+
+        bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
+        if (lastState == MovementState.dashing) keepMomentum = true;
+
+        if (desiredMoveSpeedHasChanged)
+        {
+            if (keepMomentum)
+            {
+                StopAllCoroutines();
+                StartCoroutine(SmoothlyLerpMoveSpeed());
+            }
+            else 
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMoveSpeed;
+            }
+
+        }
+
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
 
         if (Input.GetKey(crouchKey))
         {
@@ -162,8 +219,9 @@ private void Start()
 
     private void MovePlayer()
     {
+        if (state == MovementState.dashing) return;
 
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
 
@@ -203,7 +261,10 @@ private void Start()
                 rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
         }
-       
+
+        if (maxYspeed != 0 && rb.velocity.y > maxYspeed)
+            rb.velocity = new Vector3(rb.velocity.x, maxYspeed, rb.velocity.z);
+
     }
 
     private void Jump()
@@ -238,14 +299,5 @@ private void Start()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
-
-
-
-
-
-
-
-
-
 
 }
