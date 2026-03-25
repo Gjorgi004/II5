@@ -19,6 +19,6 @@ public class SceneLoader : MonoBehaviour
     public void RuinsRuins()
     {
         spawnPointName = "RuinsSpawnPoint";
-        SceneManager.LoadScene("ruins");
+        SceneManager.LoadScene("scene3");
     }
 }
