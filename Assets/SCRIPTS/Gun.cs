@@ -1,21 +1,17 @@
 using UnityEngine;
-<<<<<<< HEAD
 using System.Collections;
 using TMPro;
-=======
->>>>>>> 9a7d493153aae9bd0516ffaf2299d65fcd230ad3
 
 public class Gun : MonoBehaviour
 {
-
+    [Header("Gun Stats")]
     public float damage = 10f;
     public float range = 100f;
 
-<<<<<<< HEAD
     [Header("Ammo System")]
     public int maxAmmo = 10;
     private int currentAmmo;
-    public float reloadTime = 1f; 
+    public float reloadTime = 1f;
     private bool isReloading = false;
 
     [Header("References")]
@@ -23,7 +19,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public TextMeshProUGUI ammoText;
-    public Animator animator; 
+    public Animator animator;
 
     void Start()
     {
@@ -33,40 +29,29 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        
         if (isReloading)
             return;
 
-        
+        // Auto-reload if empty
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
             return;
         }
 
-        
+        // Manual reload
         if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
         {
             StartCoroutine(Reload());
             return;
         }
 
-        
-=======
-    public Camera fpsCam;
-    public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
-
-    void Update()
-    {
->>>>>>> 9a7d493153aae9bd0516ffaf2299d65fcd230ad3
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
     }
 
-<<<<<<< HEAD
     IEnumerator Reload()
     {
         isReloading = true;
@@ -74,17 +59,11 @@ public class Gun : MonoBehaviour
         if (ammoText != null)
             ammoText.text = "RELOADING...";
 
-        
         if (animator != null)
         {
             animator.SetTrigger("Reload");
         }
-        else
-        {
-            Debug.LogWarning("No Animator assigned to the Gun script!");
-        }
 
-        
         yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;
@@ -101,30 +80,19 @@ public class Gun : MonoBehaviour
         UpdateAmmoUI();
 
         RaycastHit hit;
+        // Shoot from camera center forward
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log("Hit: " + hit.transform.name);
 
-            
-=======
-    void Shoot()
-    {
-        muzzleFlash.Play();
-
-        RaycastHit hit;
-        Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range);
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range));
-        {
-            Debug.Log(hit.transform.name);
->>>>>>> 9a7d493153aae9bd0516ffaf2299d65fcd230ad3
+            // Handle damage
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
             {
                 target.TakeDamage(damage);
             }
 
-<<<<<<< HEAD
-            
+            // Handle impact particles
             if (impactEffect != null)
             {
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -138,12 +106,6 @@ public class Gun : MonoBehaviour
         if (ammoText != null)
         {
             ammoText.text = "AMMO " + currentAmmo + "/" + maxAmmo;
-=======
-            GameObject ImpactGO = Instantiate(impactEffect,hit.point,Quaternion.LookRotation(hit.normal));
-            Destroy(ImpactGO, 2f);
-
->>>>>>> 9a7d493153aae9bd0516ffaf2299d65fcd230ad3
         }
     }
-
 }
