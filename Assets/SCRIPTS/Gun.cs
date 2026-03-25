@@ -1,93 +1,105 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
- 
+
 public class Gun : MonoBehaviour
 {
     [Header("Gun Stats")]
     public float damage = 10f;
     public float range = 100f;
- 
+
     [Header("Ammo System")]
     public int maxAmmo = 10;
     private int currentAmmo;
-    public float reloadTime = 1f;
+    public float reloadTime = 1f; 
     private bool isReloading = false;
- 
+
     [Header("References")]
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public TextMeshProUGUI ammoText;
     public Animator animator; 
- 
+
     void Start()
     {
         currentAmmo = maxAmmo;
         UpdateAmmoUI();
     }
- 
+
     void Update()
     {
+        
         if (isReloading)
             return;
- 
+
+        
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
             return;
         }
- 
+
+        
         if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
         {
             StartCoroutine(Reload());
             return;
         }
- 
+
+        
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
     }
- 
+
     IEnumerator Reload()
     {
         isReloading = true;
- 
+
         if (ammoText != null)
             ammoText.text = "RELOADING...";
- 
+
         
         if (animator != null)
+        {
             animator.SetTrigger("Reload");
- 
+        }
+        else
+        {
+            Debug.LogWarning("No Animator assigned to the Gun script!");
+        }
+
+        
         yield return new WaitForSeconds(reloadTime);
- 
+
         currentAmmo = maxAmmo;
         isReloading = false;
         UpdateAmmoUI();
     }
- 
+
     void Shoot()
     {
         if (muzzleFlash != null)
             muzzleFlash.Play();
- 
+
         currentAmmo--;
         UpdateAmmoUI();
- 
+
         RaycastHit hit;
- 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log("Hit: " + hit.transform.name);
- 
+
+            
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
             {
                 target.TakeDamage(damage);
             }
- 
+
+            
             if (impactEffect != null)
             {
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -95,7 +107,7 @@ public class Gun : MonoBehaviour
             }
         }
     }
- 
+
     void UpdateAmmoUI()
     {
         if (ammoText != null)
