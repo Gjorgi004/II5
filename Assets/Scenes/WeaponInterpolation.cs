@@ -7,7 +7,7 @@ public class WeaponInterpolation : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position = Vector3.SmoothDamp(
             transform.position,
