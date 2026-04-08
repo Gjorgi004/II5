@@ -3,7 +3,12 @@ guid: 1526f72eabd6bb64b83efe3498228c68
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: big_strom
+    second: {fileID: 2100000, guid: 0c0054d31d795964680d627bcf2e3097, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
