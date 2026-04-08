@@ -7,12 +7,14 @@ public class Gun : MonoBehaviour
     [Header("Gun Stats")]
     public float damage = 10f;
     public float range = 100f;
+    public float fireRate = 10f; 
 
     [Header("Ammo System")]
     public int maxAmmo = 10;
     private int currentAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
+    private float nextTimeToFire = 0f; 
 
     [Header("References")]
     public Camera fpsCam;
@@ -31,31 +33,34 @@ public class Gun : MonoBehaviour
     {
         if (isReloading) return;  
 
-        if (currentAmmo <= 0)
+        if (currentAmmo <= 0 && !isReloading)
         {
             StartCoroutine(Reload());
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && !isReloading)
         {
             StartCoroutine(Reload());
             return;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
+            nextTimeToFire = Time.time + 1f / fireRate; 
             Shoot();
         }
     }
 
     IEnumerator Reload()
-   {
+    {
         isReloading = true;
         if (ammoText != null) ammoText.text = "RELOADING...";
-
-        
-         
+        if (animator != null)
+        {
+            animator.SetTrigger("Reload");
+        }
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -66,6 +71,8 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+        if (currentAmmo <= 0) return; 
+
         if (muzzleFlash != null)
             muzzleFlash.Play();
 
@@ -75,8 +82,6 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Debug.Log("Hit: " + hit.transform.name);
-
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
                 target.TakeDamage(damage);
