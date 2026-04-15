@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadForest()
     {
         spawnPointName = "ForestSpawnPoint";
-        SceneManager.LoadScene("scene3");
+        SceneManager.LoadScene("ForestScene");
     }
 
     public void LoadLab()
@@ -19,6 +19,6 @@ public class SceneLoader : MonoBehaviour
     public void RuinsRuins()
     {
         spawnPointName = "RuinsSpawnPoint";
-        SceneManager.LoadScene("scene3");
+        SceneManager.LoadScene("Ruins");
     }
 }
