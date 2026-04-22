@@ -71,7 +71,11 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        if (currentAmmo <= 0) return; 
+        if (currentAmmo <= 0) return;
+        if (animator != null)
+        {
+            animator.SetTrigger("Fire");
+        }
 
         if (muzzleFlash != null)
             muzzleFlash.Play();
