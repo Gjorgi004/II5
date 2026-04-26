@@ -8,6 +8,8 @@ namespace Kryz.CharacterStats.Examples
 		[SerializeField] Transform equipmentSlotsParent;
 		[SerializeField] EquipmentSlot[] equipmentSlots;
 
+		public GameObject Pistol;
+
 		public event Action<Item> OnItemRightClickedEvent;
 
 		private void Start()
@@ -50,5 +52,32 @@ namespace Kryz.CharacterStats.Examples
 			}
 			return false;
 		}
+
+		void Update()
+        {
+			DebugFirstSlot();
+        }
+
+		public void DebugFirstSlot()
+		{
+			// Because 'equipmentSlots' is defined at the top of this script,
+			// this code can "see" it perfectly.
+			Item equippedItem = equipmentSlots[3].Item;
+
+			if (equippedItem != null)
+			{
+				Debug.Log("Currently wearing: " + equippedItem.name);
+				if (equippedItem.name == "Pistol")
+                {
+					Pistol.SetActive(true);
+                }
+			}
+			else
+			{
+				Debug.Log("Slot 0 is empty!");
+				Pistol.SetActive(false);
+			}
+		}
+
 	}
 }

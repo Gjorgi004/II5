@@ -4221,6 +4221,7 @@ MonoBehaviour:
   - {fileID: 11400232}
   - {fileID: 11439382}
   - {fileID: 11417996}
+  Pistol: {fileID: 0}
 --- !u!1 &180976
 GameObject:
   m_ObjectHideFlags: 0
