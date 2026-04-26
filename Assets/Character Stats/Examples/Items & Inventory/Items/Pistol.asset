@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   ItemName: Pistol
-  Icon: {fileID: 21300000, guid: a15377d51625eb949ae614e8de8c76cd, type: 3}
+  Icon: {fileID: 21300000, guid: 37d80963e3f98a547b3aa40731e0c751, type: 3}
   StrengthBonus: 0
   AgilityBonus: 0
   IntelligenceBonus: 0
