@@ -11,22 +11,20 @@ public class Pickup : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-
-        Debug.Log("interacted");
+        // If you haven't manually dragged the inventory in the inspector...
+        if (inventory == null)
+        {
+            // Unity scans all objects for that "Inventory" script
+            inventory = GameObject.FindObjectOfType<Inventory>();
+        }
 
         if (inventory != null)
         {
-            // Call your specific method
+            // Try adding the item
             if (inventory.AddItem(itemData))
             {
-                Debug.Log($"Picked up {itemData.name}");
-                Destroy(gameObject); // Remove from the world
+                Destroy(gameObject);
             }
-            else
-            {
-                Debug.Log("Inventory is full! Couldn't pick up.");
-            }
-
         }
     }
 }

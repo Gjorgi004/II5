@@ -2911,8 +2911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb966c1ce4ad55a4a9c1d3eac4511c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: c001f22d4fb9666468d604d9e0b3f11e, type: 2}
-  inventory: {fileID: 0}
+  itemData: {fileID: 11400000, guid: 9c33f8f5007ddce4f8355df08445616d, type: 2}
+  inventory: {fileID: 44220435}
 --- !u!4 &1078823873
 Transform:
   m_ObjectHideFlags: 0
@@ -3307,6 +3307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8e6dd7d088fd1428f926de12020c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: cee382e869c133746844ff6f1e5dce9d, type: 2}
+  inventory: {fileID: 44220435}
   health: 100
 --- !u!114 &1280229814
 MonoBehaviour:
@@ -4285,11 +4287,11 @@ PrefabInstance:
     - target: {fileID: 11425686, guid: 369f87c2a2dd3b246b04552b05534a04, type: 3}
       propertyPath: items.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 54e1bf68d0f57a240a6234a5c66f4d25, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c33f8f5007ddce4f8355df08445616d, type: 2}
     - target: {fileID: 11425686, guid: 369f87c2a2dd3b246b04552b05534a04, type: 3}
       propertyPath: items.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 19bf89ed5bb1f9d4fab64144f54abe08, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c33f8f5007ddce4f8355df08445616d, type: 2}
     - target: {fileID: 11425686, guid: 369f87c2a2dd3b246b04552b05534a04, type: 3}
       propertyPath: itemSlots.Array.size
       value: 18
@@ -4305,7 +4307,7 @@ PrefabInstance:
     - target: {fileID: 11437416, guid: 369f87c2a2dd3b246b04552b05534a04, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5a4f86fb37b8acc44abfeeefa157fd6b, type: 3}
+      objectReference: {fileID: 21300000, guid: 37d80963e3f98a547b3aa40731e0c751, type: 3}
     - target: {fileID: 11437416, guid: 369f87c2a2dd3b246b04552b05534a04, type: 3}
       propertyPath: m_Enabled
       value: 0
