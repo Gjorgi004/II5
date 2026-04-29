@@ -74,7 +74,7 @@ namespace Kryz.CharacterStats.Examples
 			}
 			else
 			{
-				Debug.Log("Slot 0 is empty!");
+				Debug.Log("Slot 3 is empty!");
 				Pistol.SetActive(false);
 			}
 		}
