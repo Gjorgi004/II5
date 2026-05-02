@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Pistol
   Icon: {fileID: 21300000, guid: 37d80963e3f98a547b3aa40731e0c751, type: 3}
+  Description: A simple pistol given to a simple soldier. It will be your best friend
+    'till the bitter end.
   StrengthBonus: 0
   AgilityBonus: 0
   IntelligenceBonus: 0

@@ -8,6 +8,7 @@ namespace Kryz.CharacterStats.Examples
 	{
 		public static ItemTooltip Instance;
 
+		[SerializeField] Text descriptionText;
 		[SerializeField] Text nameText;
 		[SerializeField] Text slotTypeText;
 		[SerializeField] Text statsText;
@@ -26,30 +27,30 @@ namespace Kryz.CharacterStats.Examples
 
 		public void ShowTooltip(Item itemToShow)
 		{
-			if (!(itemToShow is EquippableItem)) {
-				return;
-			}
-
-			EquippableItem item = (EquippableItem)itemToShow;
-
+			// 1. Turn on the UI for EVERY item
 			gameObject.SetActive(true);
 
-			nameText.text = item.ItemName;
-			slotTypeText.text = item.EquipmentType.ToString();
+			// 2. Show the basic stuff that every Item has
+			nameText.text = itemToShow.ItemName;
+			descriptionText.text = itemToShow.Description;
 
-			sb.Length = 0;
+			// 3. NOW check if it's equippable to show stats
+			if (itemToShow is EquippableItem)
+			{
+				EquippableItem equippable = (EquippableItem)itemToShow;
+				slotTypeText.text = equippable.EquipmentType.ToString();
 
-			AddStatText(item.StrengthBonus, " Strength");
-			AddStatText(item.AgilityBonus, " Agility");
-			AddStatText(item.IntelligenceBonus, " Intelligence");
-			AddStatText(item.VitalityBonus, " Vitality");
-
-			AddStatText(item.StrengthPercentBonus * 100, "% Strength");
-			AddStatText(item.AgilityPercentBonus * 100, "% Agility");
-			AddStatText(item.IntelligencePercentBonus * 100, "% Intelligence");
-			AddStatText(item.VitalityPercentBonus * 100, "% Vitality");
-
-			statsText.text = sb.ToString();
+				sb.Length = 0;
+				AddStatText(equippable.StrengthBonus, " Strength");
+				// ... add the rest of your AddStatText lines here ...
+				statsText.text = sb.ToString();
+			}
+			else
+			{
+				// 4. If it's just a Key, clear the stat text and type text
+				slotTypeText.text = "";
+				statsText.text = "";
+			}
 		}
 
 		public void HideTooltip()

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Key
   Icon: {fileID: 21300000, guid: e037de59fc338954d9088ccdf58f06a6, type: 3}
+  Description: A key used for the entrance to the deeper forest.

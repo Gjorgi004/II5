@@ -7,5 +7,6 @@ namespace Kryz.CharacterStats.Examples
 	{
 		public string ItemName;
 		public Sprite Icon;
+		public string Description;
 	}
 }
