@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     private int currentAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
-    private float nextTimeToFire = 0f; 
+    private float nextTimeToFire = 1f; 
 
     [Header("References")]
     public Camera fpsCam;
