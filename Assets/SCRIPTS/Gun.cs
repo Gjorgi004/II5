@@ -23,10 +23,17 @@ public class Gun : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public Animator animator;
 
+    [Header("Sound Effects")]
+    public AudioSource audioSource;
+    public AudioClip shootSound;    
+    public AudioClip reloadSound;
+
     void Start()
     {
         currentAmmo = maxAmmo;
         UpdateAmmoUI();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -61,6 +68,10 @@ public class Gun : MonoBehaviour
         {
             animator.SetTrigger("Reload");
         }
+        if (audioSource != null && reloadSound != null)
+        {
+            audioSource.PlayOneShot(reloadSound);
+        }
 
         yield return new WaitForSeconds(reloadTime);
 
@@ -72,6 +83,12 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         if (currentAmmo <= 0) return;
+        if (audioSource != null && shootSound != null)
+        {
+            
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(shootSound);
+        }
         if (animator != null)
         {
             animator.SetTrigger("Fire");
