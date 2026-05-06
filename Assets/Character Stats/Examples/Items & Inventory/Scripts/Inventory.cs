@@ -52,7 +52,12 @@ namespace Kryz.CharacterStats.Examples
 			return true;
 		}
 
-		public bool RemoveItem(Item item)
+        public bool HasItem(Item item)
+        {
+            return items.Contains(item);
+        }
+
+        public bool RemoveItem(Item item)
 		{
 			if (items.Remove(item))
 			{
