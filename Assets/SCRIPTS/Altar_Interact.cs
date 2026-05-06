@@ -35,7 +35,7 @@ public class Altar_Interact : MonoBehaviour, IInteractable
 
     void Update()
     {
-       if (shouldOpen)
+        if (shouldOpen)
         {
             leftDoor.transform.position = Vector3.MoveTowards(leftDoor.transform.position, leftTargetPos, speed * Time.deltaTime);
             rightDoor.transform.position = Vector3.MoveTowards(rightDoor.transform.position, rightTargetPos, speed * Time.deltaTime);
@@ -54,10 +54,10 @@ public class Altar_Interact : MonoBehaviour, IInteractable
         if (inventory != null)
         {
             if (inventory.HasItem(keyitem))
-                {
+            {
                 Debug.Log("Opened");
                 shouldOpen = true;
-                }
+            }
         }
     }
 }
