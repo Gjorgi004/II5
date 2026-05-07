@@ -214,6 +214,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 661589813735358539}
+  - {fileID: 3754384437862629937}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -261,7 +262,7 @@ Transform:
   m_Children:
   - {fileID: 8311007141808776972}
   m_Father: {fileID: 4474156423782878279}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &4474156422564695925
 MonoBehaviour:
@@ -277,9 +278,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 100
+  fireRate: 10
+  maxAmmo: 10
+  reloadTime: 1
   fpsCam: {fileID: 661589813735358533}
   muzzleFlash: {fileID: 4383460521649006431}
   impactEffect: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
+  ammoText: {fileID: 0}
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
 --- !u!1 &3954348112970892274
 GameObject:
   m_ObjectHideFlags: 0
@@ -15077,7 +15086,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3754384437862629937}
   - {fileID: 5773627048763870162}
   m_Father: {fileID: 661589813735358539}
   m_RootOrder: 0
@@ -15285,17 +15293,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6675945022866502579}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0442, y: 1.0442, z: 1.0442}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1338, y: -0.0737, z: 0.2676}
+  m_LocalScale: {x: 1.0442002, y: 1.0442, z: 1.0442002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5918187911676838398}
   - {fileID: 4383460521634849311}
   - {fileID: 2931812657811478736}
   - {fileID: 6869125596794080710}
-  m_Father: {fileID: 4474156423782878279}
-  m_RootOrder: 0
+  m_Father: {fileID: 661589814968063330}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &4474156422074723159
 MonoBehaviour:
@@ -15311,9 +15319,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 100
+  fireRate: 10
+  maxAmmo: 10
+  reloadTime: 1
   fpsCam: {fileID: 661589813735358533}
   muzzleFlash: {fileID: 4383460521649006431}
   impactEffect: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
+  ammoText: {fileID: 0}
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
 --- !u!1 &6802931937178313685
 GameObject:
   m_ObjectHideFlags: 0
