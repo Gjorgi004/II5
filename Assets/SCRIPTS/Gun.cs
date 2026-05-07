@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
     [Header("Gun Stats")]
     public float damage = 10f;
     public float range = 100f;
-    public float fireRate = 10f; 
+    public float fireRate = 1f; 
 
     [Header("Ammo System")]
     public int maxAmmo = 10;
