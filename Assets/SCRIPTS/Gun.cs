@@ -28,6 +28,10 @@ public class Gun : MonoBehaviour
     public AudioClip shootSound;    
     public AudioClip reloadSound;
 
+    [Header("Beam")]
+    public LineRenderer tracerEffect;
+    public Transform shootPoint;
+        
     void Start()
     {
         currentAmmo = maxAmmo;
@@ -104,6 +108,9 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Target target = hit.transform.GetComponent<Target>();
+
+            StartCoroutine(SpawnBeam(hit.point));
+
             if (target != null)
                 target.TakeDamage(damage);
 
@@ -112,7 +119,29 @@ public class Gun : MonoBehaviour
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 2f);
             }
+
+            
+
         }
+        else
+        {
+            Vector3 farPoint = fpsCam.transform.position + (fpsCam.transform.forward * range);
+            StartCoroutine(SpawnBeam(farPoint));
+        }
+    }
+
+    IEnumerator SpawnBeam(Vector3 hitPoint)
+    {
+        tracerEffect.gameObject.SetActive(true);
+
+        tracerEffect.SetPosition(0, shootPoint.position);
+
+        tracerEffect.SetPosition(1, hitPoint);
+
+        yield return new WaitForSeconds(0.05f);
+
+        tracerEffect.gameObject.SetActive(false);
+
     }
 
     void UpdateAmmoUI()

@@ -7,7 +7,7 @@ public class CanvasController : MonoBehaviour
 
     void Update()
     {
-        // Detect the Escape key
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleMenu();
@@ -19,12 +19,12 @@ public class CanvasController : MonoBehaviour
         bool isActive = !menuCanvas.activeSelf;
         menuCanvas.SetActive(isActive);
 
-            // Close inventory too if the main menu is closed
+            
             if (inventoryCanvas != null) inventoryCanvas.SetActive(false);
         }
     
 
-    // This function will be called by your Button
+    
     public void OpenInventory()
     {
         if (inventoryCanvas != null)
