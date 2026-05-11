@@ -42,7 +42,9 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (isReloading) return;  
+        if (isReloading) return;
+
+        if (Time.timeScale == 0) return;
 
         if (currentAmmo <= 0 && !isReloading)
         {

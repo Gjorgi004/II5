@@ -67,7 +67,7 @@ namespace Kryz.CharacterStats.Examples
 			if (equippedItem != null)
 			{
 				Debug.Log("Currently wearing: " + equippedItem.name);
-				if (equippedItem.name == "Pistol")
+				if (equippedItem.name == "Revolver")
                 {
 					Pistol.SetActive(true);
                 }

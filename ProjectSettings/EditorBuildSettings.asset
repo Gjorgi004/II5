@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Options.unity
     guid: 301a327969610534ca2e0d6307489808
   - enabled: 1
+    path: Assets/Scenes/Main menu.unity
+    guid: a6b4b5df18fecc743aa3be3f490022f6
+  - enabled: 1
     path: Assets/Scenes/ForestScene.unity
     guid: f030a5387cd13664aa8678a33ce865ef
   - enabled: 1
@@ -17,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ruins.unity
     guid: 55b26380d1ec15041bf6738c3ffcdd78
-  - enabled: 1
-    path: Assets/Scenes/Main menu.unity
-    guid: a6b4b5df18fecc743aa3be3f490022f6
   m_configObjects: {}
