@@ -6100,6 +6100,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.484
       objectReference: {fileID: 0}
+    - target: {fileID: 325792338660475480, guid: 738bf6c6c7e98664f9a8d5a6c57127a7, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4276940429490358925, guid: 0c5ed4b09d2cf40449f277da5dcc6a22, type: 2}
     - target: {fileID: 325792338660475487, guid: 738bf6c6c7e98664f9a8d5a6c57127a7, type: 3}
       propertyPath: ammoText
       value: 
