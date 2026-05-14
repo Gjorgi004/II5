@@ -10,6 +10,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public Animator animator;
+
     public float health;
 
     //Patroling
@@ -70,6 +72,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void ChasePlayer()
     {
+        animator.SetTrigger("Chase");
         agent.SetDestination(player.position);
     }
 
@@ -83,6 +86,7 @@ public class EnemyAiTutorial : MonoBehaviour
         if (!alreadyAttacked)
         {
             ///Attack code here
+            animator.SetTrigger("Reached");
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);

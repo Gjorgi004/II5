@@ -7,8 +7,11 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text textComponent;
     public float typingSpeed = 0.05f;
     public string[] lines;
-    private int index;
+    public AudioSource audioSource;
+    public AudioClip typeSound;
+    private int index;  
     private bool isTyping = false;
+   
 
     public void StartDialogue()
     {
@@ -34,16 +37,11 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < charArray.Length; i++)
         {
             textComponent.text += charArray[i];
+            audioSource.PlayOneShot(typeSound);
             yield return new WaitForSeconds(typingSpeed);
         }
 
         isTyping = false;
-    }
-
-    void Start()
-    {
-        Debug.Log("Dialogue Manager has awakened!");
-        StartDialogue();
     }
 
     void Update()
