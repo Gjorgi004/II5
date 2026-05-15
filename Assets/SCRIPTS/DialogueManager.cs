@@ -6,7 +6,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text textComponent;
     public float typingSpeed = 0.05f;
-    public string[] lines;
+    public string[] lines;  
     public AudioSource audioSource;
     public AudioClip typeSound;
     private int index;  

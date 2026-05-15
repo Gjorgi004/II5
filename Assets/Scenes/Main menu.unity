@@ -1584,8 +1584,16 @@ MonoBehaviour:
   textComponent: {fileID: 1143369307}
   typingSpeed: 0.05
   lines:
-  - I hope this message finds you well, Expendable.
-  - Next line
+  - I hope this message finds you well, Expendable.                                                 
+    (ENTER - Next Line)
+  - 'To brief you on the mission shortly, you are to extract a sample of the abyss
+    located at the heart of the (name) ruins. '
+  - Of course, threats are unavoidable along the way.
+  - 'For this reason, we have equipped you with a revolver and leg thrusters that
+    allow you to dash in any direction. '
+  - You will have to go through the forest, reach the ruins and drop down into the
+    abyss..
+  - You will be compensated greatly for this mission. Gaia thanks you.
   audioSource: {fileID: 623183473}
   typeSound: {fileID: 8300000, guid: 8bf33dfea555a6e4489265fc1d4d5539, type: 3}
 --- !u!1 &743583115
@@ -3730,6 +3738,8 @@ MonoBehaviour:
   animator: {fileID: 2070911827}
   dialogueManager: {fileID: 664822068}
   timetowait: 4
+  audioSource: {fileID: 623183473}
+  typeSound: {fileID: 8300000, guid: cbe4f724bab521949a782a1bb72469cc, type: 3}
 --- !u!95 &2070911827
 Animator:
   serializedVersion: 5

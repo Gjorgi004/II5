@@ -17,12 +17,15 @@ public class MainMenu : MonoBehaviour
     public Animator animator;
     public DialogueManager dialogueManager;
     public float timetowait = 0f;
+    public AudioSource audioSource;
+    public AudioClip typeSound;
 
     public void PlayGame()
     {
         Debug.Log("pressed");
         whiteScreen.SetActive(true);
         animator.SetTrigger("Transition");
+        audioSource.Stop();
         StartCoroutine(MyWaitRoutine());
     }
 
