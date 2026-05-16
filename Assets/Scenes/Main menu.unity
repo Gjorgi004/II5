@@ -1382,7 +1382,6 @@ GameObject:
   - component: {fileID: 642252036}
   - component: {fileID: 642252039}
   - component: {fileID: 642252038}
-  - component: {fileID: 642252037}
   m_Layer: 5
   m_Name: Whitescreen (1)
   m_TagString: Untagged
@@ -1410,27 +1409,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &642252037
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642252035}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1c4697b2628510745887212a248f70c0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &642252038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,7 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1594,6 +1572,7 @@ MonoBehaviour:
   - You will have to go through the forest, reach the ruins and drop down into the
     abyss..
   - You will be compensated greatly for this mission. Gaia thanks you.
+  - We will contact you at every terminal. Go on now and start your mission.
   audioSource: {fileID: 623183473}
   typeSound: {fileID: 8300000, guid: 8bf33dfea555a6e4489265fc1d4d5539, type: 3}
 --- !u!1 &743583115

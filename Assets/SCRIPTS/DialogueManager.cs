@@ -62,5 +62,13 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(TypeLine());
         }
+        else
+        {
+            MainMenu mainMenu = FindFirstObjectByType<MainMenu>();
+            if (mainMenu != null)
+            {
+                mainMenu.StartFinalFadeAndLoad();
+            }
+        }
     }
 }

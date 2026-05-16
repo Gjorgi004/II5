@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Keeping the Options Canvas from Upstream
     public GameObject mainCanvas;
     public GameObject optionCanvas;
 
-    // Keeping your Transition/Dialogue variables
     public GameObject whiteScreen;
     public GameObject blackScreen;
     public GameObject whiteScreen1;
@@ -50,5 +48,23 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(timetowait);
         Text.SetActive(true);
         dialogueManager.StartDialogue();
+    }
+
+    public void StartFinalFadeAndLoad()
+    {
+        StartCoroutine(Finalfaderoutine());
+    }
+
+    IEnumerator Finalfaderoutine()
+    {
+        blackScreen.SetActive(false);
+        whiteScreen.SetActive(true);
+        whiteScreen1.SetActive(false);
+        animator.SetFloat("AnimSpeed", -1f);
+        animator.SetTrigger("Transition");
+        yield return new WaitForSeconds(1f);
+        animator.SetFloat("AnimSpeed", 1f);
+        animator.SetTrigger("Transition");
+        SceneManager.LoadSceneAsync(1);
     }
 }
