@@ -1,32 +1,39 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
-
     public Animator animator;
-
     public float health;
 
-    //Patroling
+    // Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+    private bool isCurrentlyMoving;
 
-    //Attacking
+    // Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
 
-    //States
+    // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+    // State safety switches
+    private bool isAttacking = false;
+    private string currentAnimationState = "Idle";
+
+    public float Windup = 1f;
+
+    public PlayerMovement playerMovement;
+
+    public ParticleSystem flash;
 
     private void Awake()
     {
@@ -36,7 +43,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Update()
     {
-        //Check for sight and attack range
+        if (isAttacking) return; // Completely freeze checks during attack/cooldown sequence
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -47,23 +55,21 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        agent.isStopped = false;
+        ChangeAnimationState("Run"); // Or "Walk" if you use it for patrolling
 
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
+        if (!walkPointSet) SearchWalkPoint();
+        if (walkPointSet) agent.SetDestination(walkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
+
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
-
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
@@ -72,45 +78,111 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void ChasePlayer()
     {
-        animator.SetTrigger("Chase");
+        agent.isStopped = false;
         agent.SetDestination(player.position);
+
+        if (!isCurrentlyMoving)
+        {
+            animator.ResetTrigger("Reached"); // Clear old attack data
+            animator.SetTrigger("Chase");     // Fires your Run state
+            isCurrentlyMoving = true;
+        }
     }
 
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        isAttacking = true;
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
 
-        transform.LookAt(player);
+        isCurrentlyMoving = false;
+
+        Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(targetPosition);
+
+        ChangeAnimationState("Attack");
+        flash.Play();
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            animator.SetTrigger("Reached");
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            StartCoroutine(Attackwindup());
         }
     }
+
+    private IEnumerator Attackwindup()
+    {
+
+        alreadyAttacked = true;
+
+
+        yield return new WaitForSeconds(Windup);
+
+        Vector3 enemyFlatPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 playerFlatPos = new Vector3(player.position.x, 0, player.position.z);
+        float distanceToPlayer = Vector3.Distance(enemyFlatPos, playerFlatPos);
+        float strikeBuffer = 1.2f;
+
+        float maxAttackRange = attackRange + strikeBuffer;
+
+        if (distanceToPlayer <= maxAttackRange)
+        {
+            
+            
+            if (playerMovement != null && playerMovement.dashing)
+            {
+                Debug.Log("Dodged!");
+                goto SkipDamage;
+            }
+
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(15f); // Deals 15 damage instantly
+                Debug.Log("Direct Melee Hit! Player health is now: " + playerHealth.currentHealth);
+            }
+
+            Vector3 spawnPosition = transform.position + transform.forward * 1.2f + transform.up * 1f;
+            GameObject debugHitbox = Instantiate(projectile, spawnPosition, Quaternion.identity);
+            Destroy(debugHitbox, 0.2f);
+
+           
+        }
+        SkipDamage:
+        yield return new WaitForSeconds(timeBetweenAttacks);
+        ResetAttack();
+    }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        isAttacking = false;
+        agent.isStopped = false;
+        ChangeAnimationState("Idle"); // Default back to idle to rest
+    }
+
+    // A state machine system that prevents spamming triggers frame by frame
+    private void ChangeAnimationState(string newAnimationState)
+    {
+        if (currentAnimationState == newAnimationState) return;
+
+        // Reset all triggers to prevent animations from stacking up weirdly
+        animator.ResetTrigger("Chase");
+        animator.ResetTrigger("Reached");
+
+        if (newAnimationState == "Run") animator.SetTrigger("Chase");
+        if (newAnimationState == "Attack") animator.SetTrigger("Reached");
+        if (newAnimationState == "Idle") animator.SetTrigger("Chase"); // Or whatever drops it back down
+
+        currentAnimationState = newAnimationState;
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
-
         if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
+
+    private void DestroyEnemy() => Destroy(gameObject);
 
     private void OnDrawGizmosSelected()
     {
