@@ -11,6 +11,7 @@ public class Dashing : MonoBehaviour
     public Transform playerCam;
     private Rigidbody rb;
     private PlayerMovement pm;
+    public AudioSource dashsound;
 
     [Header("Dashing")]
     public float dashForce;
@@ -54,6 +55,7 @@ public class Dashing : MonoBehaviour
 
         pm.dashing = true;
         pm.maxYspeed = 1;
+        dashsound.Play();
 
         Transform forwardT;
 

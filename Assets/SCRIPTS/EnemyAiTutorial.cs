@@ -33,6 +33,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public PlayerMovement playerMovement;
 
+    public AudioSource zombiesound;
+    public AudioSource zombiesound2;
     public ParticleSystem flash;
 
     private void Awake()
@@ -85,6 +87,7 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             animator.ResetTrigger("Reached"); // Clear old attack data
             animator.SetTrigger("Chase");     // Fires your Run state
+            zombiesound.Play();
             isCurrentlyMoving = true;
         }
     }
@@ -113,7 +116,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
 
         alreadyAttacked = true;
-
+        zombiesound2.Play();
 
         yield return new WaitForSeconds(Windup);
 
