@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   ItemName: Revolver
-  Icon: {fileID: 21300000, guid: 37d80963e3f98a547b3aa40731e0c751, type: 3}
+  Icon: {fileID: 21300000, guid: a1d0ffc6fb752fb4390c7acc2786352f, type: 3}
   Description: A simple revolver given to a simple soldier. It will be your best
     friend 'till the bitter end.
   StrengthBonus: 0

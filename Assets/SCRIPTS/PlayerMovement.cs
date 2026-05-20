@@ -115,7 +115,7 @@ private void Start()
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyUp(crouchKey))
+       if (Input.GetKeyUp(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYscale, transform.localScale.z);
         }
@@ -163,11 +163,11 @@ private void Start()
         }
 
         //Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
-        {
-            state = MovementState.sprinting;
-            desiredMoveSpeed = sprintSpeed;
-        }
+      //  else if (grounded && Input.GetKey(sprintKey))
+       // {
+        //    state = MovementState.sprinting;
+         //   desiredMoveSpeed = sprintSpeed;
+      //  }
 
         //Mode - Walking
         else if (grounded)

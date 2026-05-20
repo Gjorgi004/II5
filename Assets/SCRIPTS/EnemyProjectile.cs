@@ -2,33 +2,45 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public float damage = 10f; 
+
+    public float speed = 10f;
+    public int damage = 25;
+    public float lifetime = 5f;
+
+    private Vector3 moveDirection;
+    public void SetupDirection(Vector3 targetDirection)
+    {
+        moveDirection = targetDirection.normalized;
+        Destroy(gameObject, lifetime); // Self-destruct timer
+    }
+
+    private void Update()
+    {
+        transform.position += moveDirection * speed * Time.deltaTime;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.CompareTag("Enemy")) 
+        PlayerMovement movement = other.GetComponentInParent<PlayerMovement>();
+        // Check if it hit the player
+        if (other.CompareTag("Player"))
         {
-            return; 
-        }
+            if (movement.dashing == true) return;
 
-        
-        if (other.CompareTag("Player")) 
-        {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>(); // Try to find the PlayerHealth script (adjust the component name to match yours)
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
             }
 
-            
             Destroy(gameObject);
         }
-        else 
+        // Destroy it if it hits solid walls/floors, but ignore other enemies
+        else if (other.gameObject.layer != LayerMask.NameToLayer("Enemy"))
         {
-            
-            Destroy(gameObject);
+           // Destroy(gameObject);
         }
     }
+
+
 }
