@@ -1448,6 +1448,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241952662}
   m_CullTransparentMesh: 1
+--- !u!1 &247645859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4927612488882604643, guid: f828c0b20570bfa44a31ae95e4b1d580, type: 3}
+  m_PrefabInstance: {fileID: 852116290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &247932579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62495,7 +62500,6 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1.5
-  projectile: {fileID: 0}
   sightRange: 20
   attackRange: 1.5
   playerInSightRange: 0
@@ -79390,7 +79394,6 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1.5
-  projectile: {fileID: 0}
   sightRange: 20
   attackRange: 1.5
   playerInSightRange: 0
@@ -89970,7 +89973,6 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1.5
-  projectile: {fileID: 0}
   sightRange: 20
   attackRange: 1.5
   playerInSightRange: 0
@@ -119875,7 +119877,6 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1.5
-  projectile: {fileID: 0}
   sightRange: 20
   attackRange: 1.5
   playerInSightRange: 0
@@ -136117,7 +136118,7 @@ PrefabInstance:
     - target: {fileID: 1914568076344954092, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
       propertyPath: camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 247645859}
     - target: {fileID: 1914568076344954092, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
       propertyPath: healthText
       value: 

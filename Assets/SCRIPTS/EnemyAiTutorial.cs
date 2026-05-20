@@ -19,7 +19,7 @@ public class EnemyAiTutorial : MonoBehaviour
     // Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
+   // public GameObject projectile;
 
     // States
     public float sightRange, attackRange;
@@ -145,8 +145,8 @@ public class EnemyAiTutorial : MonoBehaviour
             }
 
             Vector3 spawnPosition = transform.position + transform.forward * 1.2f + transform.up * 1f;
-            GameObject debugHitbox = Instantiate(projectile, spawnPosition, Quaternion.identity);
-            Destroy(debugHitbox, 0.2f);
+           // GameObject debugHitbox = Instantiate(projectile, spawnPosition, Quaternion.identity);
+           // Destroy(debugHitbox, 0.2f);
 
            
         }
