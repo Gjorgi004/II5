@@ -11,6 +11,8 @@ public class Target : MonoBehaviour
     public ParticleSystem bloodkill;
     public PlayerSouls playersouls;
 
+    public int souls = 0;
+
     public AudioSource audiosource;
 
     public float health = 50f;
@@ -26,7 +28,7 @@ public class Target : MonoBehaviour
             Instantiate(bloodkill, transform.position + (Vector3.up * 1.1f), Quaternion.identity, null);
             killsfx.Play();
             bloodkill.Play();
-            playersouls.AddSouls(125);
+            playersouls.AddSouls(souls);
             Die();
         }
     }

@@ -7,7 +7,18 @@ public class EnemyProjectile : MonoBehaviour
     public int damage = 25;
     public float lifetime = 5f;
 
+    public float trackingStrength = 4f;
+    private Transform playerTransform;
+    public AudioSource whooshsound;
+
     private Vector3 moveDirection;
+
+    private void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+        whooshsound.Play();
+    }
+
     public void SetupDirection(Vector3 targetDirection)
     {
         moveDirection = targetDirection.normalized;
@@ -16,6 +27,9 @@ public class EnemyProjectile : MonoBehaviour
 
     private void Update()
     {
+        Vector3 targetDir = ((playerTransform.position + Vector3.up * 1f) - transform.position).normalized;
+        moveDirection = Vector3.Lerp(moveDirection, targetDir, trackingStrength * Time.deltaTime).normalized;
+
         transform.position += moveDirection * speed * Time.deltaTime;
     }
 
