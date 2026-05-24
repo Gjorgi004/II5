@@ -39,6 +39,7 @@ public class BossAI : MonoBehaviour
     public float Windup = 1f;
 
     public PlayerMovement playerMovement;
+    private BossTarget bosstargetscript;
 
     public AudioSource zombiesound;
     public AudioSource zombiesound2;
@@ -47,12 +48,18 @@ public class BossAI : MonoBehaviour
     public ParticleSystem Glow;
     public ParticleSystem Slam;
 
+    private bool uihasbeenactivated = false;
+
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        bosstargetscript = GetComponent<BossTarget>();
+    }
     private void Update()
     {
         if (isAttacking) return; // Completely freeze checks during attack/cooldown sequence
@@ -63,6 +70,19 @@ public class BossAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        // If the player steps inside your custom activation range threshold
+        if (distanceToPlayer <= sightRange)
+        {
+            // 2. SET TO ACTIVE: Turn on the UI frame!
+            bosstargetscript.ToggleUIFrame(true);
+            uihasbeenactivated = true;
+
+            Debug.Log("Player entered range! Boss Health Bar displayed.");
+        }
+
     }
 
     private void Patroling()

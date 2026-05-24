@@ -116,6 +116,10 @@ public class Gun : MonoBehaviour
             if (target != null)
                 target.TakeDamage(damage);
 
+            BossTarget target2 = hit.transform.GetComponent<BossTarget>();
+            if (target2 != null)
+                target2.TakeDamage(damage);
+
             if (impactEffect != null)
             {
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
