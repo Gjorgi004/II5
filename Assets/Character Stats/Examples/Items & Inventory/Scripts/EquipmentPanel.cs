@@ -79,5 +79,15 @@ namespace Kryz.CharacterStats.Examples
 			}
 		}
 
+		public Item GetItemAtSlot(int index)
+		{
+			// Checks if the array exists and makes sure your index number is safe
+			if (equipmentSlots != null && index >= 0 && index < equipmentSlots.Length)
+			{
+				return equipmentSlots[index].Item;
+			}
+			return null;
+		}
+
 	}
 }

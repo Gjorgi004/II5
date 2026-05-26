@@ -35,6 +35,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public AudioSource zombiesound;
     public AudioSource zombiesound2;
+    public AudioSource whoosh;
     public ParticleSystem flash;
 
     private void Awake()
@@ -117,6 +118,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
         alreadyAttacked = true;
         zombiesound2.Play();
+        whoosh.Play();
 
         yield return new WaitForSeconds(Windup);
 
