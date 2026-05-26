@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ruins.unity
     guid: 55b26380d1ec15041bf6738c3ffcdd78
+  - enabled: 1
+    path: Assets/Scenes/The Abyss.unity
+    guid: cd197e9b67091b64f801c16dd61cfe8e
   m_configObjects: {}
