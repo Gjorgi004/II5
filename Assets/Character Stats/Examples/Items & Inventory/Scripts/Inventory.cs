@@ -9,6 +9,7 @@ namespace Kryz.CharacterStats.Examples
 		[SerializeField] List<Item> items;
 		[SerializeField] Transform itemsParent;
 		[SerializeField] ItemSlot[] itemSlots;
+		[SerializeField] List<Item> allPossibleItemsDatabase;
 
 		public event Action<Item> OnItemRightClickedEvent;
 
@@ -71,5 +72,31 @@ namespace Kryz.CharacterStats.Examples
 		{
 			return items.Count >= itemSlots.Length;
 		}
+
+		public Item FindItemByName(string itemName)
+		{
+			foreach (Item item in allPossibleItemsDatabase)
+			{
+				if (item != null && item.name == itemName) return item;
+			}
+			return null;
+		}
+
+		public string[] GetItemNamesForSaving()
+		{
+			string[] names = new string[items.Count];
+			for (int i = 0; i < items.Count; i++)
+			{
+				names[i] = items[i] != null ? items[i].name : "";
+			}
+			return names;
+		}
+
+		// Allows SaveManager to clear the private list before reloading items
+		public void ClearInventoryForLoading()
+		{
+			items.Clear();
+		}
+
 	}
 }

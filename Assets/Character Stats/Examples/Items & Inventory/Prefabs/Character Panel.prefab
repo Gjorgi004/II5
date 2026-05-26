@@ -1734,6 +1734,7 @@ MonoBehaviour:
   - {fileID: 11445532}
   - {fileID: 11458674}
   - {fileID: 11458568}
+  allPossibleItemsDatabase: []
 --- !u!1 &126180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4221,6 +4222,7 @@ MonoBehaviour:
   - {fileID: 11400232}
   - {fileID: 11439382}
   - {fileID: 11417996}
+  equippableItemsDatabase: []
   Pistol: {fileID: 0}
 --- !u!1 &180976
 GameObject:

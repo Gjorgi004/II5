@@ -7,6 +7,7 @@ namespace Kryz.CharacterStats.Examples
 	{
 		[SerializeField] Transform equipmentSlotsParent;
 		[SerializeField] EquipmentSlot[] equipmentSlots;
+		[SerializeField] System.Collections.Generic.List<EquippableItem> equippableItemsDatabase;
 
 		public GameObject Pistol;
 
@@ -57,6 +58,30 @@ namespace Kryz.CharacterStats.Examples
         {
 			DebugFirstSlot();
         }
+
+		public EquipmentSlot[] GetEquipmentSlots()
+		{
+			return equipmentSlots;
+		}
+
+		// === ADD THIS HELPER TO CLEAR SLOTS BEFORE LOADING ===
+		public void ClearAllEquipmentSlots()
+		{
+			for (int i = 0; i < equipmentSlots.Length; i++)
+			{
+				equipmentSlots[i].Item = null;
+			}
+		}
+
+		// === ADD THIS HELPER TO LOOKUP EQUIPPABLE ITEMS BY NAME ===
+		public EquippableItem FindEquippableByName(string itemName)
+		{
+			foreach (var item in equippableItemsDatabase)
+			{
+				if (item != null && item.name == itemName) return item;
+			}
+			return null;
+		}
 
 		public void DebugFirstSlot()
 		{
