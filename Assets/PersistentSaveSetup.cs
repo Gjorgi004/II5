@@ -6,15 +6,15 @@ public class PersistentSaveSetup : MonoBehaviour
 
     void Awake()
     {
-        // Singleton Pattern: Ensures only ONE save system exists, even if we reload the main menu
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object alive when changing scenes!
+            DontDestroyOnLoad(gameObject); // This keeps it alive!
         }
         else
         {
-            Destroy(gameObject); // Delete duplicates that spawn when coming back to this scene
+            // If we loop back to Scene 1, destroy the duplicate layout
+            Destroy(gameObject);
         }
     }
 }

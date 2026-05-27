@@ -1564,8 +1564,8 @@ MonoBehaviour:
   lines:
   - I hope this message finds you well, Expendable.                                                 
     (ENTER - Next Line)
-  - 'To brief you on the mission shortly, you are to extract a sample of the abyss
-    located at the heart of the (name) ruins. '
+  - To brief you on the mission shortly, you are to extract a sample of the abyss
+    located at the heart of the ancient ruins.
   - Of course, threats are unavoidable along the way.
   - 'For this reason, we have equipped you with a revolver and leg thrusters that
     allow you to dash in any direction. '
