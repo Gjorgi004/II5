@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/The Abyss.unity
     guid: cd197e9b67091b64f801c16dd61cfe8e
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a9a83212290a6724fb768a0efdb4b683
   m_configObjects: {}

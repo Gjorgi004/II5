@@ -17864,9 +17864,21 @@ PrefabInstance:
       propertyPath: healthBarFill
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8400102226078629912, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400102226500820874, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8400102226655738384, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
       propertyPath: m_Name
       value: Player (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400102226655738384, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8400102226655738396, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
       propertyPath: dashsound
@@ -17919,6 +17931,14 @@ PrefabInstance:
     - target: {fileID: 8400102226655738399, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400102226778963631, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400102226947712644, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94f8aced80b95a44a9815cbd1f5fa70d, type: 3}

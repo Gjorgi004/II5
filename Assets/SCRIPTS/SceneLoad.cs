@@ -13,12 +13,12 @@ public class SceneLoad : MonoBehaviour
         {
            
             
-            SaveManager saveManager = FindObjectOfType<SaveManager>();
-            saveManager.SaveGameProgress();
+          //  SaveManager saveManager = FindObjectOfType<SaveManager>();
+            //saveManager.SaveGameProgress();
 
-            saveManager.playerInventory = FindObjectOfType<Kryz.CharacterStats.Examples.Inventory>();
-            saveManager.equipmentPanel = FindObjectOfType<Kryz.CharacterStats.Examples.EquipmentPanel>();
-            saveManager.LoadGameProgress();
+           // saveManager.playerInventory = FindObjectOfType<Kryz.CharacterStats.Examples.Inventory>();
+          //  saveManager.equipmentPanel = FindObjectOfType<Kryz.CharacterStats.Examples.EquipmentPanel>();
+           // saveManager.LoadGameProgress();
 
             Debug.Log("Loading: " + sceneToLoad);
             SceneManager.LoadScene(sceneToLoad);
